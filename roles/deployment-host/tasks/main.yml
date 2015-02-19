@@ -1,0 +1,31 @@
+---
+#
+- name: Run update
+  apt: update_cache=yes
+
+- name: Install required packages
+  apt: name={{ item }} state=present
+  with_items:
+    - aptitude
+    - build-essential
+    - git
+    - ntp
+    - ntpdate
+    - openssh-server
+    - python-dev
+    - sudo
+
+- name: Clone repo
+  git: repo=https://github.com/stackforge/os-ansible-deployment.git clone=yes dest=/opt/os-ansible-deployment version=9.0.5
+
+- name: Install pip
+  command: "{{item}}"
+  with_items:
+    - curl -O https://bootstrap.pypa.io/get-pip.py
+    - python get-pip.py
+
+- name: Install pip requirements.txt
+  pip: requirements=/opt/os-ansible-deployment/requirements.txt
+
+- name: Copy rpc_deploy to /etc
+  command: cp -R /opt/os-ansible-deployment/etc/rpc_deploy /etc

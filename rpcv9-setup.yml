@@ -1,0 +1,11 @@
+---
+#
+- name: Deploy target hosts
+  hosts: target-hosts
+  roles:
+    - target-host
+
+- name: Deploy deployment hosts
+  hosts: deployment-hosts
+  roles:
+    - deployment-host

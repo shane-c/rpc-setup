@@ -1,0 +1,26 @@
+---
+#
+- name: Run update and upgrade
+  apt: upgrade=dist update_cache=yes
+
+- name: Install required packages
+  apt: name={{ item }} state=present
+  with_items:
+    - bridge-utils
+    - debootstrap
+    - ifenslave
+    - ifenslave-2.6
+    - lsof
+    - lvm2
+    - ntp
+    - ntpdate
+    - openssh-server
+    - sudo
+    - tcpdump
+    - vlan
+
+- name: Enable kernel modules for bonding/vlans
+  command: "{{item}}"
+  with_items:
+    - echo 'bonding' >> /etc/modules
+    - echo '8021q' >> /etc/modules 

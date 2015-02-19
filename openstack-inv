@@ -1,0 +1,6 @@
+[target-hosts]
+shane.compute1 ansible_ssh_host=104.130.173.106
+shane.infra1 ansible_ssh_host=104.130.172.56
+
+[deployment-hosts]
+shane.infra1 ansible_ssh_host=104.130.172.56
