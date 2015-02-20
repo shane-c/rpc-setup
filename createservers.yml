@@ -1,12 +1,13 @@
 - name: Build infrastructure node
   hosts: localhost
+  connection: local
   gather_facts: False
   tasks:
     - name: Server build request
       local_action:
         module: rax
         credentials: ~/ansible/.rax_rc
-        name: shane.infra%04d.openstack
+        name: shane.infra%02d.openstack
         flavor: performance1-8
         image: a1558fdc-3182-4a0f-b48a-aa900a5826c3
         key_name: shaneansible
@@ -26,9 +27,9 @@
     - name: Server build request
       local_action:
         module: rax
-	count: 2
+        count: 2
         credentials: ~/ansible/.rax_rc
-        name: shane.compute%04d.openstack
+        name: shane.compute%02d.openstack
         flavor: performance1-8
         image: a1558fdc-3182-4a0f-b48a-aa900a5826c3
         key_name: shaneansible
@@ -49,8 +50,8 @@
       local_action:
         module: rax
         credentials: ~/ansible/.rax_rc
-        name: shane.logging%04d.openstack
-        flavor: performance1-4
+        name: shane.logging%02d.openstack
+        flavor: performance1-8
         image: a1558fdc-3182-4a0f-b48a-aa900a5826c3
         key_name: shaneansible
         group: openstack
@@ -70,8 +71,8 @@
       local_action:
         module: rax
         credentials: ~/ansible/.rax_rc
-        name: shane.cinder%04d.openstack
-        flavor: performance1-4
+        name: shane.cinder%02d.openstack
+        flavor: performance1-8
         image: a1558fdc-3182-4a0f-b48a-aa900a5826c3
         key_name: shaneansible
         group: openstack

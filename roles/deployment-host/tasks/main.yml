@@ -6,6 +6,7 @@
 - name: Install required packages
   apt: name={{ item }} state=present
   with_items:
+    - vim
     - aptitude
     - build-essential
     - git
@@ -16,7 +17,7 @@
     - sudo
 
 - name: Clone repo
-  git: repo=https://github.com/stackforge/os-ansible-deployment.git clone=yes dest=/opt/os-ansible-deployment version=9.0.5
+  git: repo=https://github.com/stackforge/os-ansible-deployment.git clone=yes dest=/opt/os-ansible-deployment version=juno
 
 - name: Install pip
   command: "{{item}}"
@@ -29,3 +30,6 @@
 
 - name: Copy rpc_deploy to /etc
   command: cp -R /opt/os-ansible-deployment/etc/rpc_deploy /etc
+
+- name: Run user_variables script to generate pw's
+  command: chdir=/opt/os-ansible-deployment/scripts ./pw-token-gen.py --file /etc/rpc_deploy/user_variables.yml
