@@ -37,7 +37,8 @@ bridge_stp off
 bridge_waitport 0
 bridge_fd 0
 bridge_ports vxlan-mgmt
-address 172.29.236.10
+address 172.29.236.{% if inventory_hostname == "shane.infra01.openstack" %}{{ infra1_id }}{% endif %}{% if inventory_hostname == "shane.compute01.openstack" %}{{ compute1_id }}{% endif %}
+
 netmask 255.255.252.0
 dns-nameservers 8.8.8.8
  
