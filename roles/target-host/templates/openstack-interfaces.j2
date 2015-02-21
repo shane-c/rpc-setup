@@ -37,7 +37,7 @@ bridge_stp off
 bridge_waitport 0
 bridge_fd 0
 bridge_ports vxlan-mgmt
-address 172.29.236.{% if inventory_hostname == "shane.infra01.openstack" %}{{ infra1_id }}{% endif %}{% if inventory_hostname == "shane.compute01.openstack" %}{{ compute1_id }}{% endif %}
+address 172.29.236.{% if inventory_hostname == "shane.infra01.openstack" %}{{ infra1_id }}{% elif inventory_hostname == "shane.compute01.openstack" %}{{ compute1_id }}{% elif inventory_hostname == "shane.compute02.openstack" %}{{ compute2_id }}{% elif inventory_hostname == "shane.cinder01.openstack" %}{{ cinder1_id }}{% elif inventory_hostname == "shane.logging01.openstack" %}{{ logging1_id }}{% endif %}
 
 netmask 255.255.252.0
 dns-nameservers 8.8.8.8
@@ -49,7 +49,8 @@ bridge_stp off
 bridge_waitport 0
 bridge_fd 0
 bridge_ports vxlan-vxlan
-address 172.29.240.10
+address 172.29.240.{% if inventory_hostname == "shane.infra01.openstack" %}{{ infra1_id }}{% elif inventory_hostname == "shane.compute01.openstack" %}{{ compute1_id }}{% elif inventory_hostname == "shane.compute02.openstack" %}{{ compute2_id }}{% elif inventory_hostname == "shane.cinder01.openstack" %}{{ cinder1_id }}{% elif inventory_hostname == "shane.logging01.openstack" %}{{ logging1_id }}{% endif %}
+
 netmask 255.255.252.0
  
 # Bridge VLAN
@@ -67,5 +68,6 @@ bridge_stp off
 bridge_waitport 0
 bridge_fd 0
 bridge_ports vxlan-storage
-address 172.29.244.10
+address 172.29.244.{% if inventory_hostname == "shane.infra01.openstack" %}{{ infra1_id }}{% elif inventory_hostname == "shane.compute01.openstack" %}{{ compute1_id }}{% elif inventory_hostname == "shane.compute02.openstack" %}{{ compute2_id }}{% elif inventory_hostname == "shane.cinder01.openstack" %}{{ cinder1_id }}{% elif inventory_hostname == "shane.logging01.openstack" %}{{ logging1_id }}{% endif %}
+
 netmask 255.255.252.0 
