@@ -1,9 +1,11 @@
 [target-hosts]
-shane.infra01.openstack ansible_ssh_host=162.242.213.234
-shane.compute01.openstack ansible_ssh_host=162.242.228.34
-shane.compute02.openstack ansible_ssh_host=162.242.228.92
-shane.logging01.openstack ansible_ssh_host=104.130.4.85
-shane.cinder01.openstack ansible_ssh_host=104.130.30.209
+shane.cinder01.openstack ansible_ssh_host=10.209.128.83
+shane.compute01.openstack ansible_ssh_host=10.209.128.188
+shane.compute02.openstack ansible_ssh_host=10.209.129.27
+shane.infra01.openstack ansible_ssh_host=10.209.128.101
+shane.infra02.openstack ansible_ssh_host=10.209.128.160
+shane.infra03.openstack ansible_ssh_host=10.209.129.15
+shane.logging01.openstack ansible_ssh_host=10.209.129.48
 
 [deployment-hosts]
-shane.infra01.openstack ansible_ssh_host=162.242.213.234
+shane.infra01.openstack ansible_ssh_host=10.209.128.101

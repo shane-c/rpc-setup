@@ -17,7 +17,7 @@
     - sudo
 
 - name: Clone repo
-  git: repo=https://github.com/stackforge/os-ansible-deployment.git clone=yes dest=/opt/os-ansible-deployment version=juno
+  git: repo=https://github.com/stackforge/os-ansible-deployment.git clone=yes dest=/opt/os-ansible-deployment version=10.1.6
 
 - name: Install pip
   command: "{{item}}"

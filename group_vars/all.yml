@@ -1,5 +1,7 @@
 infra1_id: 10
-compute1_id: 11
-compute2_id: 12
-cinder1_id: 13
-logging1_id: 14
+infra2_id: 11
+infra3_id: 12
+compute1_id: 13
+compute2_id: 14
+cinder1_id: 15
+logging1_id: 16
