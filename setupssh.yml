@@ -7,7 +7,6 @@
     - name: Create SSH key
       user: name=root generate_ssh_key=yes
       register: sshkey
-#    - debug: var=sshkey
 
 - name: Fetch .pub key
   gather_facts: false
@@ -25,19 +24,3 @@
         user=root
         key="{{ lookup('file', '/tmp/id_rsa.pub') }}"
         state=present
-
-#- name: Distribute SSH key to target hosts
-#  hosts: all
-#  tasks:
-#    - copy: src=/tmp/id_rsa.pub dest=/root/.ssh/authorized_keys owner=root group=root mode=0600
-
-# Using with_file
-#- name: Set up authorized_keys for the root user
-#  gather_facts: false
-#  hosts: all
-#  tasks:
-#    - name: Set up authorized_keys for the root user
-#      authorized_key: >
-#        user=root
-#        key="{{ sshkey.ssh_public_key }}"
-#        state=present
