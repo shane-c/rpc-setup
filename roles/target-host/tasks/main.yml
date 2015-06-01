@@ -22,9 +22,6 @@
 - name: Enable kernel modules for bonding/vlans
   copy: src=modules dest=/etc/modules owner=root group=root mode=0644 
 
-- name: Copy infra authorized_keys file
-  copy: src=authorized_keys dest=/root/.ssh/authorized_keys owner=root group=root mode=0600
-
 - name: Add source for interfaces.d
   shell: echo 'source /etc/network/interfaces.d/*.cfg' >> /etc/network/interfaces
 
